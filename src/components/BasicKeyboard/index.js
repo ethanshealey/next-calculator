@@ -46,6 +46,8 @@ const BasicKeyboard = (props) => {
             <Button onClick={() => handlePress('Enter')}><FaEquals /></Button>
           </span>
           <span id='second-sidebar'>
+          <Button onClick={() => handlePress('(')}>{'('}</Button>
+          <Button onClick={() => handlePress(')')}>{')'}</Button>
             <Button onClick={() => handlePress('Left')}><ArrowLeftOutlined /></Button>
             <Button onClick={() => handlePress('Right')}><ArrowRightOutlined /></Button>
             <Button onClick={() => handlePress('Back')}><FaBackspace /></Button>
