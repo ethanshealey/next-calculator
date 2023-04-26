@@ -242,6 +242,11 @@ html {
 
 .footer {
   flex: 0 1 auto;
+  border-top: 2px solid var(--mid);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
 }
 
 @media only screen and (max-width: 900px) {

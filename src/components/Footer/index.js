@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div id='footer'>&copy; {new Date().getFullYear()} ethanshealey.com</div>
   )
 }
 
