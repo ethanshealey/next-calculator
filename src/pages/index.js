@@ -14,6 +14,8 @@ const Home = () => {
     setHistory(h => [item, ...h])
   }
 
+  const cleanEquation = (eq) => eq.replace(/[^\d\*\%\/\^\(\)\.!+-]/g, '')
+
   const handleVirtualKeyboard = (key) => {
 
     const el = document.getElementById('basic-calc-input-id')
@@ -37,13 +39,11 @@ const Home = () => {
         console.log(equation.slice(0, pos-1) + equation.slice(pos))
         setEquation(eq => eq.slice(0, pos-1) + eq.slice(pos))
       }
-      
-      // 
     }
     else {
       try {
         el.value += key
-        setEquation(_ => el.value.replace(/[^\d\*\%\/\^\(\)!+-]/g, '')) 
+        setEquation(_ => cleanEquation(el.value)) 
         el.focus()
         let ans = Parser.evaluate(el.value)
         setAnswer(_ => '= ' + ans)
@@ -57,7 +57,7 @@ const Home = () => {
   }
 
   const handleInput = (e) => {
-    setEquation(_ => e.target.value.replace(/[^\d\*\%\/\^\(\)!+-]/g, '')) 
+    setEquation(_ => cleanEquation(e.target.value)) 
     let ans;
     try {
       ans = Parser.evaluate(e.target.value)
@@ -72,7 +72,7 @@ const Home = () => {
 
   const handleKeyDown = (e) => {
     if(e.key === "Enter" && equation !== '') {
-      props.pushToHistory({ equation: equation, answer: answer })
+      pushToHistory({ equation: equation, answer: answer })
       setEquation(_ => '')
       setAnswer(_ => '')
     }
@@ -82,7 +82,7 @@ const Home = () => {
     <div className='calc-wrapper'>
       <div className='calc'>
         <div className='calc-top'>
-          <BasicHistory history={history} />
+          <BasicHistory history={history} setEquation={setEquation} setAnswer={setAnswer} />
           <BasicInput equation={equation} answer={answer} handleInput={handleInput} handleKeyDown={handleKeyDown} pushToHistory={pushToHistory} />
         </div>
         <BasicKeyboard handleVirtualKeyboard={handleVirtualKeyboard} />
