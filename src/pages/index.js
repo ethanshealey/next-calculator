@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Parser } from 'expr-eval'
 import BasicHistory from "@/components/BasicHistory";
 import BasicKeyboard from "@/components/BasicKeyboard";
@@ -9,6 +9,19 @@ const Home = () => {
   const [ history, setHistory ] = useState([])
   const [ equation, setEquation ] = useState('')
   const [ answer, setAnswer ] = useState('')
+
+  useEffect(() => {
+    let ans;
+    try {
+      ans = Parser.evaluate(equation)
+      setAnswer(_ => '= ' + ans)
+      document.getElementById('calc-ans').style.opacity = 100
+    }
+    catch(e) {
+      setAnswer(_ => '')
+      document.getElementById('calc-ans').style.opacity = 0
+    }
+  }, [equation])
 
   const pushToHistory = (item) => {
     setHistory(h => [item, ...h])
@@ -21,9 +34,11 @@ const Home = () => {
     const el = document.getElementById('basic-calc-input-id')
 
     if(key === 'Enter') {
-      pushToHistory({ equation: equation, answer: answer })
-      setEquation(_ => '')
-      setAnswer(_ => '')
+      if(answer !== '') {
+        pushToHistory({ equation: equation, answer: answer })
+        setEquation(_ => '')
+        setAnswer(_ => '')
+      }
     }
     else if(key === 'Left') {
       el.setSelectionRange(el.selectionEnd-1, el.selectionEnd-1)
@@ -41,33 +56,14 @@ const Home = () => {
       }
     }
     else {
-      try {
-        el.value += key
-        setEquation(_ => cleanEquation(el.value)) 
-        el.focus()
-        let ans = Parser.evaluate(el.value)
-        setAnswer(_ => '= ' + ans)
-        document.getElementById('calc-ans').style.opacity = 100
-      }
-      catch(e){
-        setAnswer(_ => '')
-        document.getElementById('calc-ans').style.opacity = 0
-      }
+      el.value += key
+      setEquation(_ => cleanEquation(el.value)) 
+      el.focus()
     }
   }
 
   const handleInput = (e) => {
     setEquation(_ => cleanEquation(e.target.value)) 
-    let ans;
-    try {
-      ans = Parser.evaluate(e.target.value)
-      setAnswer(_ => '= ' + ans)
-      document.getElementById('calc-ans').style.opacity = 100
-    }
-    catch(e) {
-      setAnswer(_ => '')
-      document.getElementById('calc-ans').style.opacity = 0
-    }
   }
 
   const handleKeyDown = (e) => {

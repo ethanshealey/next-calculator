@@ -15,8 +15,8 @@ const BasicKeyboard = (props) => {
         <div id='numbers'>
           <span id="first-number-row">
             <Button onClick={() => handlePress('^')}><b>^</b></Button>
-            <Button onClick={() => handlePress('/')}><FaDivide /></Button>
-            <Button onClick={() => handlePress('*')}><FaTimes /></Button>
+            <Button onClick={() => handlePress('/')} icon={<FaDivide />} />
+            <Button onClick={() => handlePress('*')} icon={<FaTimes />} />
             
           </span>
           <span id="second-number-row">
@@ -41,9 +41,9 @@ const BasicKeyboard = (props) => {
         </div>
         <div id="sidebar">
           <span id='first-sidebar'>
-            <Button onClick={() => handlePress('-')}><FaMinus /></Button>
-            <Button onClick={() => handlePress('+')}><FaPlus /></Button>
-            <Button onClick={() => handlePress('Enter')}><FaEquals /></Button>
+            <Button onClick={() => handlePress('-')} icon={<FaMinus />} />
+            <Button onClick={() => handlePress('+')} icon={<FaPlus />} />
+            <Button onClick={() => handlePress('Enter')} icon={<FaEquals />} />
           </span>
           <span id='second-sidebar'>
           <Button onClick={() => handlePress('(')}>{'('}</Button>
