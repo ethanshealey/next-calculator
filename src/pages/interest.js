@@ -3,7 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { Input, Button } from 'antd';
 
 const numToMonth = (mo) => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][mo%12]
-const getMonth = (i) => `${numToMonth(new Date().getMonth()+i)} '${(parseInt(new Date().getFullYear()) + (Math.floor(i/12) + new Date().getMonth())).toString().slice(2)}`
+const getMonth = (i) => `${numToMonth(new Date().getMonth()+i)} '${(parseInt(new Date().getFullYear()) + Math.floor((i + new Date().getMonth())/12)).toString().slice(2)}`
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
