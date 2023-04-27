@@ -42,12 +42,12 @@ const BasicKeyboard = (props) => {
         <div id="sidebar">
           <span id='first-sidebar'>
             <Button onClick={() => handlePress('-')} icon={<FaMinus />} />
-            <Button onClick={() => handlePress('+')} icon={<FaPlus />} />
-            <Button onClick={() => handlePress('Enter')} icon={<FaEquals />} />
+            <Button onClick={() => handlePress('+')} id="plus" icon={<FaPlus />} />
+            <Button onClick={() => handlePress('Enter')} icon={<FaEquals />} id="equal" />
           </span>
           <span id='second-sidebar'>
-          <Button onClick={() => handlePress('(')}>{'('}</Button>
-          <Button onClick={() => handlePress(')')}>{')'}</Button>
+            <Button onClick={() => handlePress('(')}>{'('}</Button>
+            <Button onClick={() => handlePress(')')}>{')'}</Button>
             <Button onClick={() => handlePress('Left')}><ArrowLeftOutlined /></Button>
             <Button onClick={() => handlePress('Right')}><ArrowRightOutlined /></Button>
             <Button onClick={() => handlePress('Back')}><FaBackspace /></Button>
