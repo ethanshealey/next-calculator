@@ -1,0 +1,179 @@
+#interest-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    #interest {
+        width: 50vw;
+        height: 800px;
+        border: 3px solid var(--foreground);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        #interest-input-panel {
+            height: 100%;
+            width: 50%;
+            background-color: var(--foreground);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            h2 {
+                color: var(--text);
+                font-family: var(--font);
+                font-weight: 200;
+                font-size: 15px;
+                margin-left: 0px;
+                margin-bottom: -10px;
+                width: 85%;
+            }
+            .interest-input-dollar {
+                margin: 10px;
+                margin-left: -5px;
+                width: 85%;
+                input {
+                    border-left-color: var(--mid) !important;
+                }
+            }
+            .interest-input-apy {
+                margin: 10px;
+                margin-left: -5px;
+                width: 85%;
+                input {
+                    border-right-color: var(--mid) !important;
+                }
+                .ant-input-group-addon {
+                    border-right-color: #0d1114 !important;
+                }
+            }
+            #interest-input-time-wrapper {
+                margin: 10px;
+                margin-left: -5px;
+                width: 85%;
+                display: flex;
+                flex-direction: row;
+                :last-child {
+                    border-radius:  0 5px 5px 0 !important;
+                }
+                .interest-input-time {
+                    width: 30%;
+                    border-radius: 5px 0 0 5px !important;
+                    
+                }
+                .time-picker-item {
+                    width: 35%;
+                    color: var(--text);
+                    font-family: var(--font);
+                    font-weight: 200;
+                    font-size: 15px;
+                    background-color: var(--mid);
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    cursor: pointer;
+                    border-bottom: 2.5px solid transparent;
+                }
+                .time-picker-item-active {
+                    border-bottom: 2.5px solid #0157ff;
+                }
+            }
+            #calculate-interest {
+                width: 85%;
+                margin-left: -7px;
+                margin-top: 15px;
+            }
+        }
+        #interest-result-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 50%;
+            font-family: var(--text);
+            span {
+                width: 100%;
+                height: 50%;
+            }
+            #interest-breakdown {
+                h2 {
+                    color: var(--text);
+                    font-family: var(--font);
+                }
+                hr {
+                    color: var(--text);
+                }
+                .interest-breakdown-row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    color: var(--text);
+                    font-family: var(--font);
+                    font-weight: 200;
+                    font-size: 12px;
+                    align-items: center;
+                    #total-sq {
+                        width: 25px;
+                        height: 25px;
+                        background-color: #1753a7;
+                        border: 1.5px solid #166de8;
+                    }
+                    #interest-sq {
+                        width: 25px;
+                        height: 25px;
+                        background-color: #579aa1;
+                        border: 1.5px solid #7bc39d;
+                    }
+                    #contributions-sq {
+                        width: 25px;
+                        height: 25px;
+                        background-color: #8fb68d;
+                        border: 1.5px solid #acc483;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ANTD STUFF
+
+.ant-input {
+    background-color: var(--mid) !important;
+    color: var(--text) !important;
+    border-color: #0d1114 !important;
+    // border-left-color: var(--mid) !important;
+}
+.ant-input-group-addon {
+    background-color: var(--mid) !important;
+    color: var(--text) !important;
+    border-color: #0d1114 !important;
+    border-right-color: var(--mid) !important;
+}
+
+.recharts-text, .recharts-tooltip-wrapper {
+    font-family: var(--font) !important;
+    font-size: 12px;
+}
+
+// MOBILE STUFF
+
+@media only screen and (max-width: 900px) {
+    #interest-wrapper {
+        padding: 0 !important;
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+        #interest {
+          width: 100vw !important;
+          height: 1000px !important;
+          flex-direction: column !important;
+          #interest-input-panel {
+            width: 100% !important;
+          }
+          #interest-result-panel {
+            width: 100% !important;
+          }
+        }
+    }
+    
+}
