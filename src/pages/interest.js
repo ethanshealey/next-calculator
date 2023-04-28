@@ -3,7 +3,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { Input, Button } from 'antd';
 
 const numToMonth = (mo) => ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][mo%12]
-const getMonth = (i) => `${numToMonth(new Date().getMonth()+i)} '${(parseInt(new Date().getFullYear()) + Math.floor((i + new Date().getMonth())/12)).toString().slice(2)}`
+const getDateString = (i) => `${numToMonth(new Date().getMonth()+i)} '${(parseInt(new Date().getFullYear()) + Math.floor((i + new Date().getMonth())/12)).toString().slice(2)}`
 
 const formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
@@ -41,12 +41,12 @@ const Interest = () => {
       p *= 12
     for(let i = 0; i < p; i++) {
       // for each month
-      currAmt = Math.round((parseFloat(currAmt) * (1.0 + ((parseFloat(rate)/100.0)/12)) + parseFloat(monthly))*100)/100
-      currInt = Math.round((parseFloat(currAmt) * ((parseFloat(rate)/100.0)/12)))
+      currInt = parseFloat(currAmt) * ((parseFloat(rate)/100.0)/12)
       if(totals.length !== 0) currInt += totals.slice(-1)[0].Interest
-      currCont = Math.round(parseFloat(monthly) * (i+1))
+      currAmt = parseFloat(currAmt) * (1.0 + ((parseFloat(rate)/100.0)/12)) + parseFloat(monthly)
+      currCont = parseFloat(monthly) * (i+1)
 
-      totals.push({ key: i, month: getMonth(i), Total: currAmt, Contributions: currCont, Interest: currInt })
+      totals.push({ key: i, month: getDateString(i), Total: currAmt, Contributions: currCont, Interest: currInt })
     }
     setTotalAmounts(_ => totals)
   }
