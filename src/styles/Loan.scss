@@ -100,6 +100,7 @@
                     justify-content: center0;
                     align-items: center;
                     div {
+                        width: 50%;
                         .loan-input-apy {
                             margin: 10px;
                             margin-left: -5px;
@@ -113,7 +114,7 @@
                         }
                     }
                     #calculate-loan {
-                        width: 42%;
+                        width: 50%;
                         margin-top: 20px;
                     }
                 }
@@ -182,25 +183,15 @@
         padding-bottom: 50px !important;
         #loan {
           width: 100vw !important;
-          height: 1000px !important;
-          #loan-input-output {
-            flex-direction: column !important;
-            #loan-input-panel {
-                width: 100% !important;
-            }
-            #loan-output-panel {
-                width: 100% !important;
-            }
-          }
         }
     }
-    #apr-calc-group {
-        div {
-            width: 50% !important;
-        }
-        #calculate-loan {
-            width: 50% !important;
-        }
-    }
+    // #apr-calc-group {
+    //     div {
+    //         width: 50% !important;
+    //     }
+    //     #calculate-loan {
+    //         width: 50% !important;
+    //     }
+    // }
     
 }
