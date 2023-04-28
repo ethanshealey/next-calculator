@@ -91,61 +91,75 @@ const Loan = () => {
 
             <p id="show-hide-table-btn" onClick={() => setShowTable(sst => !sst)}><a href="#!">Show amortization schedule</a></p>
           </div>
-              <div id='loan-output-panel'>
-                <div id="monthly-payment">
-                  {
-                  chartData.length > 0 && (
-                    <>
-                      <p>Monthly Payments</p>
-                      <h1>{ formatter.format(Math.round(monthlyPayment*100)/100 ) }</h1>
-                    </>
-                    )
-                  }
-                </div>
+            <div id='loan-output-panel'>
+              <div id="monthly-payment">
                 {
                 chartData.length > 0 && (
-                    <>
-                      <span>
-                        <ResponsiveContainer width="100%" height="100%">
-                          <AreaChart
-                            height={400}
-                            data={chartData}
-                            margin={{
-                              top: 10,
-                              right: 30,
-                              left: 0,
-                              bottom: 0,
-                            }}
-                          >
-                            <defs>
-                              <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#1677ff" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#1677ff" stopOpacity={0}/>
-                              </linearGradient>
-                              <linearGradient id="colorInterest" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#ffc658" stopOpacity={0}/>
-                              </linearGradient>
-                              <linearGradient id="colorContributions" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-                                <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
-                              </linearGradient>
-                            </defs>
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="Payment Date"/>
-                            <YAxis />
-                            <Tooltip formatter={(v) => formatter.format(v)} />
-                            <Area type="monotone" dataKey="Balance" stroke="#1677ff" fill="url(#colorTotal)" />
-                            <Area type="monotone" dataKey="Total Interest" stroke="#ffc658" fill="url(#colorInterest)" />
-                            <Area type="monotone" dataKey="Interest" stroke="#82ca9d" fill="url(#colorContributions)" />
-                          </AreaChart>
-                        </ResponsiveContainer>
-                      </span>
-                    </>
+                  <>
+                    <p>Monthly Payments</p>
+                    <h1>{ formatter.format(Math.round(monthlyPayment*100)/100 ) }</h1>
+                  </>
                   )
                 }
               </div>
-          
+              {
+              chartData.length > 0 && (
+                  <>
+                    <span>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart
+                          height={400}
+                          data={chartData}
+                          margin={{
+                            top: 10,
+                            right: 30,
+                            left: 0,
+                            bottom: 0,
+                          }}
+                        >
+                          <defs>
+                            <linearGradient id="colorTotal" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#1677ff" stopOpacity={0.8}/>
+                              <stop offset="95%" stopColor="#1677ff" stopOpacity={0}/>
+                            </linearGradient>
+                            <linearGradient id="colorInterest" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#ffc658" stopOpacity={0.8}/>
+                              <stop offset="95%" stopColor="#ffc658" stopOpacity={0}/>
+                            </linearGradient>
+                            <linearGradient id="colorContributions" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
+                              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+                            </linearGradient>
+                          </defs>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="Payment Date"/>
+                          <YAxis />
+                          <Tooltip formatter={(v) => formatter.format(v)} />
+                          <Area type="monotone" dataKey="Balance" stroke="#1677ff" fill="url(#colorTotal)" />
+                          <Area type="monotone" dataKey="Total Interest" stroke="#ffc658" fill="url(#colorInterest)" />
+                          <Area type="monotone" dataKey="Interest" stroke="#82ca9d" fill="url(#colorContributions)" />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </span>
+                    <div id="loan-breakdown">
+                      <h2>Total loan breakdown</h2>
+                      <hr />
+                      <h4 className='loan-breakdown-row'>
+                        <div id='total-sq' />
+                        <div>Total</div> 
+                        <div>{ chartData.length > 0 && formatter.format(parseFloat(loanAmt) + chartData.slice(-1)[0]['Total Interest']) }</div>
+                      </h4>
+                      <hr />
+                      <h4 className='loan-breakdown-row'>
+                        <div id='int-sq' />
+                        <div>Total Interest</div> 
+                        <div>{ chartData.length > 0 && formatter.format(chartData.slice(-1)[0]['Total Interest']) }</div>
+                      </h4>
+                    </div>
+                  </>
+                )
+              }
+            </div>
         </div>
         { showTable && (
           <div id='loan-output-table'>
