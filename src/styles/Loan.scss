@@ -1,0 +1,206 @@
+#loan-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    #loan {
+        width: 50vw;
+        height: 800px;
+        border: 5px solid var(--foreground);
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        #loan-input-output {
+            width: 100%;
+            height: 800px;
+            display: flex;
+            flex-direction: column;
+            #loan-input-panel {
+                height: 100%;
+                width: 100%;
+                background-color: var(--foreground);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                h2 {
+                    color: var(--text);
+                    font-family: var(--font);
+                    font-weight: 200;
+                    font-size: 15px;
+                    margin-left: 0px;
+                    margin-bottom: -10px;
+                    width: 85%;
+                }
+                .loan-input-dollar {
+                    margin: 10px;
+                    margin-left: -5px;
+                    width: 85%;
+                    input {
+                        border-left-color: var(--mid) !important;
+                    }
+                }
+                .loan-input-time {
+                    width: 30%;
+                    border-radius: 5px 0 0 5px !important;
+                    
+                }
+                .time-picker-item {
+                    width: 35%;
+                    color: var(--text);
+                    font-family: var(--font);
+                    font-weight: 200;
+                    font-size: 15px;
+                    background-color: var(--mid);
+                    display: flex;
+                    justify-content: center;
+                    align-items: end;
+                    cursor: pointer;
+                    border-bottom: 2.5px solid transparent;
+                }
+                .time-picker-item-active {
+                    border-bottom: 2.5px solid #1677ff;
+                }
+                #loan-input-time-wrapper {
+                    margin: 10px;
+                    margin-left: -5px;
+                    width: 85%;
+                    display: flex;
+                    flex-direction: row;
+                    :last-child {
+                        border-radius:  0 5px 5px 0 !important;
+                    }
+                    .loan-input-time {
+                        width: 30%;
+                        border-radius: 5px 0 0 5px !important;
+                        
+                    }
+                    .time-picker-item {
+                        width: 35%;
+                        color: var(--text);
+                        font-family: var(--font);
+                        font-weight: 200;
+                        font-size: 15px;
+                        background-color: var(--mid);
+                        display: flex;
+                        justify-content: center;
+                        align-items: end;
+                        cursor: pointer;
+                        border-bottom: 2.5px solid transparent;
+                    }
+                    .time-picker-item-active {
+                        border-bottom: 2.5px solid #1677ff;
+                    }
+                }
+                #apr-calc-group {
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: -5px;
+                    width: 85%;
+                    justify-content: center0;
+                    align-items: center;
+                    div {
+                        .loan-input-apy {
+                            margin: 10px;
+                            margin-left: -5px;
+                            width: 95%;
+                            input {
+                                border-right-color: var(--mid) !important;
+                            }
+                            .ant-input-group-addon {
+                                border-right-color: #0d1114 !important;
+                            }
+                        }
+                    }
+                    #calculate-loan {
+                        width: 42%;
+                        margin-top: 20px;
+                    }
+                }
+
+                #show-hide-table-btn {
+                    height: auto;
+                    align-self: center;
+                    a {
+                        color: #1677ff;
+                        font-size: 10.5px;
+                        text-decoration: none;
+                        font-family: var(--font);
+                        
+                    }
+                    :hover {
+                        text-decoration: underline dashed #1677ff !important;
+                    }
+                }
+
+            }
+        }
+
+        #loan-output-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 900px;
+            width: 100%;
+            font-family: var(--text);
+            #monthly-payment {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                h1 {
+                    color: var(--text);
+                    font-family: var(--font);
+                    margin-top: -25px;
+                    margin-bottom: -5px;
+                }
+                p {
+                    color: var(--text);
+                    font-family: var(--font);
+                    font-weight: 200;
+                }
+            }
+        }
+        #loan-output-table {
+            width: 100%;
+            background-color: var(--foreground);   
+            border: 5px solid var(--foreground);
+            margin-left: -5px;
+            border-radius: 0 0 5px 5px;
+            transition: all 1s ease;
+        }
+    }
+}
+
+// MOBILE STUFF
+
+@media only screen and (max-width: 900px) {
+    #loan-wrapper {
+        padding: 0 !important;
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+        #loan {
+          width: 100vw !important;
+          height: 1000px !important;
+          #loan-input-output {
+            flex-direction: column !important;
+            #loan-input-panel {
+                width: 100% !important;
+            }
+            #loan-output-panel {
+                width: 100% !important;
+            }
+          }
+        }
+    }
+    #apr-calc-group {
+        div {
+            width: 50% !important;
+        }
+        #calculate-loan {
+            width: 50% !important;
+        }
+    }
+    
+}
