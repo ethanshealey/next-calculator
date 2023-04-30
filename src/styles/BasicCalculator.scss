@@ -21,6 +21,7 @@
       }
       .basic-calc-history {
         overflow: scroll; 
+        overflow-x: hidden;
         display: flex;
         flex-direction: column-reverse;
         height: 90%;
