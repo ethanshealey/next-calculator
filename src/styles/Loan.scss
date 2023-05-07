@@ -215,17 +215,23 @@
 @media only screen and (max-width: 900px) {
     #loan-wrapper {
         padding: 0 !important;
-        // padding-top: 50px !important;
-        padding-bottom: 50px !important;
-        #loan {
-          width: 100vw !important;
-          #loan-output-panel {
-            span {
-                height: 1000px !important;
-            }
-          }
-        }
     }
+    #loan {
+        width: 100vw !important;
+    }
+    // #loan-wrapper {
+    //     padding: 0 !important;
+    //     // padding-top: 50px !important;
+    //     padding-bottom: 50px !important;
+    //     #loan {
+    //       width: 100vw !important;
+    //       #loan-output-panel {
+    //         span {
+    //             height: 1000px !important;
+    //         }
+    //       }
+    //     }
+    // }
     // #apr-calc-group {
     //     div {
     //         width: 50% !important;
