@@ -202,8 +202,11 @@
             background-color: var(--foreground);   
             border: 5px solid var(--foreground);
             margin-left: -5px;
+            margin-top: 90px;
             border-radius: 0 0 5px 5px;
             transition: all 1s ease;
+            height: 800px;
+            position: relative;
         }
     }
 }
@@ -218,6 +221,9 @@
     }
     #loan {
         width: 100vw !important;
+    }
+    #loan-output-panel {
+        margin-top: -250px !important;
     }
     // #loan-wrapper {
     //     padding: 0 !important;
