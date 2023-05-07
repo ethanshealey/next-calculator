@@ -161,10 +161,10 @@ const Loan = () => {
               }
             </div>
             { showTable && (
-          <div id='loan-output-table'>
-            <h1>hi</h1>
-          </div>
-        )}
+              <div id='loan-output-table'>
+                <h1>hi</h1>
+              </div>
+            )}
         </div>
         
         

@@ -219,7 +219,11 @@
         padding-bottom: 50px !important;
         #loan {
           width: 100vw !important;
-          height: 1000px !important;
+          #loan-output-panel {
+            span {
+                height: 1000px !important;
+            }
+          }
         }
     }
     // #apr-calc-group {
